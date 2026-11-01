@@ -226,4 +226,12 @@ test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7
   }
   assert.equal((home.match(/class="island-task" href="\/online-requests\/"/g) ?? []).length, 6);
   assert.doesNotMatch(read(site, "our-team/index.html"), /named accountable GP/);
+  assert.match(
+    read(site, "prescriptions/index.html"),
+    /nhsinform\.scot\/tests-and-treatments\/medicines-and-medical-aids\/prescriptions\//,
+  );
+  assert.doesNotMatch(
+    read(site, "prescriptions/index.html"),
+    /href="[^"]*nhs-services\/pharmacy\/"/,
+  );
 });

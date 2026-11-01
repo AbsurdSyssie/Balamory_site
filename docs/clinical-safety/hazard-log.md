@@ -23,6 +23,8 @@ Ratings use the DCB0129 risk matrix: severity (1 minor to 5 catastrophic) and li
 
 ### Fictional Isle of Mull demonstration (1 November 2026)
 
+H9 external-link verification: checked NHS 24, NHS inform, complaints and NHS App destinations over HTTPS. Replaced a pharmacy category URL that returned 404 with the prescription information page discovered from NHS inform's service index; a regression assertion protects that destination. The complaints link uses its current section anchor.
+
 This fork accepts `nation: scotland` only when `demo: true`. This is not production Scottish support or clinical approval. England and Wales validation remains unchanged. H1/H9: all demo pages retain 999 and 111, with NHS 24 information rather than England's online triage. NHS inform is the health information destination. No CQC identity, rating, England earnings declaration, Welsh complaints route or Scottish NHS App functionality is claimed. The optional external NHS App link is explicitly labelled England.
 
 H2/H7: all practice facts are intentionally fictional, as authorised for this design demonstration. The address has no postcode or map and the Ofcom drama number is displayed but request links are local. Z00001 is an internal fictional template identifier, not a Scottish ODS code and is not published in the footer. H4/H10: all appointment, registration, prescription and admin actions lead to the exact local `/online-requests/` page; there are no supplier embeds, forms or trackers. A global fictional banner and noindex remain on all pages. These controls are covered in `tests/build.test.js` and `tests/scottish-demo.test.js`. A genuine practice must not turn off demo mode to launch this fork; Scottish production support requires a separate review.
