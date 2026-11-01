@@ -1,5 +1,9 @@
 # Clinical safety
 
+## This fictional fork
+
+Balamory Group Practice is a design demonstration, not a medical service or a clinically approved Scottish practice website. All practice details are invented with the demo owner's permission. Requests stay on a local inert page. NHS 24 and emergency telephone signposting remain real. See [DEMO.md](DEMO.md) and the [fork-specific hazard review](docs/clinical-safety/hazard-log.md#fictional-isle-of-mull-demonstration-1-november-2026). The upstream review below does not approve this fork for patient use.
+
 ## What the template does
 
 Open GP Practice Website produces a plain information website for a GP practice: how to contact the practice, opening times, how to book or request care online, prescriptions, test results, registration, the team, services, and the policies practices are expected to publish. Every page tells patients to call 999 in an emergency and 111 for urgent help when the practice is closed.

@@ -178,6 +178,8 @@ test("the appointments page warns against using the form in an emergency (hazard
 test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7/H9/H10)", () => {
   const home = read(site, "index.html");
   assert.match(home, /Balamory Group Practice/);
+  assert.match(home, /href="\/images\/balamory.svg"/);
+  assert.doesNotMatch(home, /href="[^"]*nhsuk-icon|href="[^"]*favicon/);
   assert.match(home, /NHS App \(England\)/);
   assert.match(home, /href="https:\/\/www\.nhs\.uk\/nhs-app\/"/);
   assert.match(
@@ -205,7 +207,7 @@ test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7
           /^https:\/\/(www\.)?(nhs24\.scot|nhsinform\.scot|nhs\.uk|cloudflare\.com)\//.test(href),
         `${file}: ${href}`,
       );
-      if (href.startsWith("/") && !href.startsWith("/assets/")) {
+      if (href.startsWith("/") && !href.startsWith("/assets/") && !href.startsWith("/images/")) {
         const target = href === "/" ? "index.html" : `${href.slice(1)}index.html`;
         assert.ok(fs.existsSync(path.join(site, target)), `${file}: broken ${href}`);
       }

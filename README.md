@@ -1,5 +1,7 @@
 # Open GP Practice Website
 
+**This copy is the fictional Balamory Group Practice demonstration.** View <https://balamory-site.pages.dev/> and read [DEMO.md](DEMO.md) for its content, safety boundaries and manual publishing instructions. It is not a real practice or general Scottish production support. The original template documentation follows.
+
 A free, open source website template that lets a GP practice put a safe, NHS-style website online in an afternoon, with an AI assistant doing the technical work.
 
 [![CI](https://github.com/pacharanero/open-gp-practice-website/actions/workflows/ci.yml/badge.svg)](https://github.com/pacharanero/open-gp-practice-website/actions/workflows/ci.yml)

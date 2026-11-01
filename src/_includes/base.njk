@@ -13,6 +13,13 @@
 
 {% set assetPath = "/assets" %}
 {% set p = practice.practice %}
+{% if practice.scottish_demo %}{% set themeColor = "#143e49" %}{% endif %}
+
+{% block headIcons %}
+  {% if practice.scottish_demo %}
+  <link rel="icon" href="/images/balamory.svg" type="image/svg+xml">
+  {% else %}{{ super() }}{% endif %}
+{% endblock %}
 
 {% set navItems = [
   { text: "Appointments", href: "/appointments/" },
