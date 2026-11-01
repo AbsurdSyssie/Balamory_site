@@ -4,10 +4,12 @@ title: Urgent help
 lede: Where to get help if you need it quickly, including when we are closed.
 ---
 {% from "nhsuk/components/card/macro.njk" import card %}
+{% from "nhsuk/components/warning-callout/macro.njk" import warningCallout %}
 
 {% if practice.scottish_demo %}
-<h2>Emergency help</h2>
+{% call warningCallout({ heading: "Emergency help" }) %}
 <p>If it is a life-threatening emergency, <strong>call <a href="tel:999">999</a></strong> or go to A&amp;E.</p>
+{% endcall %}
 <h2>Urgent help when your GP practice is closed</h2>
 <p><strong>Call <a href="tel:111">111</a></strong> for NHS 24. <a href="https://www.nhs24.scot/111/">Read about the 111 service</a>.</p>
 <h2>Health information</h2>

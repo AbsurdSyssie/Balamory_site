@@ -76,6 +76,18 @@ test("urgent help links to the right 111 service for the nation", () => {
   assert.doesNotMatch(read(wales, "index.html"), /https:\/\/111\.nhs\.uk\//);
 });
 
+test("Scottish demo urgent-help page highlights existing emergency guidance (hazard H1)", () => {
+  const html = read(balamory, "urgent-help/index.html");
+  assert.match(html, /class="nhsuk-card nhsuk-card--warning"/);
+  assert.match(html, /Emergency help/);
+  assert.match(html, /If it is a life-threatening emergency/);
+  assert.match(html, /href="tel:999"[^>]*>999<\/a>/);
+  assert.match(html, /or go to A&amp;E/);
+  assert.match(html, /href="tel:111"[^>]*>111<\/a>/);
+  assert.match(html, /NHS 24/);
+  assert.match(html, /nhs24\.scot\/111/);
+});
+
 test("all standard pages are built", () => {
   for (const page of [
     "index.html",

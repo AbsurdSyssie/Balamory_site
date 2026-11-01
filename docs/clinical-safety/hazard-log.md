@@ -29,6 +29,8 @@ This fork accepts `nation: scotland` only when `demo: true`. This is not product
 
 H2/H7: all practice facts are intentionally fictional, as authorised for this design demonstration. The address has no postcode or map and the Ofcom drama number is displayed but request links are local. Z00001 is an internal fictional template identifier, not a Scottish ODS code and is not published in the footer. H4/H10: all appointment, registration, prescription and admin actions lead to the exact local `/online-requests/` page; there are no supplier embeds, forms or trackers. A global fictional banner and noindex remain on all pages. These controls are covered in `tests/build.test.js` and `tests/scottish-demo.test.js`. A genuine practice must not turn off demo mode to launch this fork; Scottish production support requires a separate review.
 
+H1: the Balamory dedicated urgent-help page now highlights its existing life-threatening-emergency/999 guidance using the NHS.UK warning callout. Automated coverage checks the callout and existing 999 and NHS 24/111 signposting; the invariant that every page contains 999 and 111 remains unchanged.
+
 - Re-review ratings when the template changes in a way that affects a hazard or control.
 - Add automated accessibility testing (for example axe) to CI.
 - Consider a Content Security Policy generated from the trusted embed domains.
