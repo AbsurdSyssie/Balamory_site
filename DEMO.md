@@ -1,6 +1,6 @@
 # Balamory Group Practice
 
-An entirely fictional independent design demonstration. The owner requested Balamory, an invented Isle of Mull address, whimsical staff and local simulated request links. No real practice, clinicians, NHS endorsement, regulator identity or supplier account is represented. Original CSS artwork uses no television images or characters.
+An entirely fictional independent design demonstration. The owner requested Balamory, an invented Isle of Mull address, whimsical staff and local simulated request links. No real practice, clinicians, NHS endorsement, regulator identity or supplier account is represented. The homepage photograph is Tim S Addison's [Not Balamory but Tobermory](https://commons.wikimedia.org/wiki/File:Not_Balamory_but_Tobermory_-_geograph.org.uk_-_1464192.jpg), used under [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/); the locally stored 640 × 377 original is credited visibly on the page. Original CSS artwork uses no television images or characters.
 
 ## Content and safety decisions
 

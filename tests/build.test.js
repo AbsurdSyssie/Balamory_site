@@ -180,7 +180,13 @@ test("the appointments page warns against using the form in an emergency (hazard
 test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7/H9/H10)", () => {
   const home = read(balamory, "index.html");
   assert.match(home, /Balamory Group Practice/);
-  assert.match(home, /href="\/images\/balamory.svg"/);
+  assert.match(home, /src="\/images\/tobermory-harbour\.jpg" width="640" height="377"/);
+  assert.match(home, /alt="Colourful waterfront buildings reflected in Tobermory harbour\."/);
+  assert.match(
+    home,
+    /href="https:\/\/commons\.wikimedia\.org\/wiki\/File:Not_Balamory_but_Tobermory_-_geograph\.org\.uk_-_1464192\.jpg">Tim S Addison \/ Not Balamory but Tobermory<\/a> \/ <a href="https:\/\/creativecommons\.org\/licenses\/by-sa\/2\.0\/">CC BY-SA 2\.0/,
+  );
+  assert.ok(fs.existsSync(path.join(balamory, "images/tobermory-harbour.jpg")));
   assert.doesNotMatch(home, /href="[^"]*nhsuk-icon|href="[^"]*favicon/);
   assert.match(home, /NHS App \(England\)/);
   assert.match(home, /href="https:\/\/www\.nhs\.uk\/nhs-app\/"/);
@@ -206,7 +212,9 @@ test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7
       const href = match[1];
       assert.ok(
         !/^https?:/.test(href) ||
-          /^https:\/\/(www\.)?(nhs24\.scot|nhsinform\.scot|nhs\.uk|cloudflare\.com)\//.test(href),
+          /^https:\/\/(www\.)?(nhs24\.scot|nhsinform\.scot|nhs\.uk|cloudflare\.com|geograph\.org\.uk|commons\.wikimedia\.org|creativecommons\.org)\//.test(
+            href,
+          ),
         `${file}: ${href}`,
       );
       if (href.startsWith("/") && !href.startsWith("/assets/") && !href.startsWith("/images/")) {
