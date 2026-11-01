@@ -7,7 +7,7 @@ lede: Where to get help if you need it quickly, including when we are closed.
 {% from "nhsuk/components/warning-callout/macro.njk" import warningCallout %}
 
 {% if practice.scottish_demo %}
-{% call warningCallout({ heading: "Emergency help" }) %}
+{% call warningCallout({ heading: "Emergency help", headingLevel: 2 }) %}
 <p>If it is a life-threatening emergency, <strong>call <a href="tel:999">999</a></strong> or go to A&amp;E.</p>
 {% endcall %}
 <h2>Urgent help when your GP practice is closed</h2>

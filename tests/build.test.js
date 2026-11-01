@@ -79,6 +79,7 @@ test("urgent help links to the right 111 service for the nation", () => {
 test("Scottish demo urgent-help page highlights existing emergency guidance (hazard H1)", () => {
   const html = read(balamory, "urgent-help/index.html");
   assert.match(html, /class="nhsuk-card nhsuk-card--warning"/);
+  assert.match(html, /<h2 class="nhsuk-card__heading">[\s\S]*?Emergency help[\s\S]*?<\/h2>/);
   assert.match(html, /Emergency help/);
   assert.match(html, /If it is a life-threatening emergency/);
   assert.match(html, /href="tel:999"[^>]*>999<\/a>/);
