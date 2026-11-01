@@ -2,7 +2,7 @@
 
 ## This fictional fork
 
-Balamory Group Practice is a design demonstration, not a medical service or a clinically approved Scottish practice website. All practice details are invented with the demo owner's permission. Requests stay on a local inert page. NHS 24 and emergency telephone signposting remain real. See [DEMO.md](DEMO.md) and the [fork-specific hazard review](docs/clinical-safety/hazard-log.md#fictional-isle-of-mull-demonstration-1-november-2026). The upstream review below does not approve this fork for patient use.
+Balamory Group Practice is an independent English service-design demonstration with a fictional Isle of Mull setting, not a medical service or an NHS-endorsed website. All practice details are invented with the demo owner's permission. Requests stay on a local inert page. NHS 111 online and emergency telephone signposting remain real. See [DEMO.md](DEMO.md) and the [fork-specific hazard review](docs/clinical-safety/hazard-log.md#fictional-isle-of-mull-demonstration-1-november-2026). The upstream review below does not approve this fork for patient use.
 
 ## What the template does
 

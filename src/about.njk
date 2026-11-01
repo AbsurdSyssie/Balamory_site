@@ -6,7 +6,7 @@ title: About us
 {% if p.description %}<p>{{ p.description }}</p>{% endif %}
 {% if p.pcn %}<p>We are part of {{ p.pcn }}{% if p.icb %}, and our services are commissioned by {{ p.icb }}{% endif %}.</p>{% endif %}
 
-{% if practice.urgent.nation == "england" and practice.cqc %}
+{% if not practice.fictional_demo and practice.urgent.nation == "england" and practice.cqc %}
 <h2>Our CQC rating</h2>
 <p>The Care Quality Commission (CQC) inspects GP practices in England.</p>
 {% if practice.cqc.embed_html %}

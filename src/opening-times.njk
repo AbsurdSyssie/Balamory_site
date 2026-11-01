@@ -37,8 +37,8 @@ title: Opening times
 {% endif %}
 
 <h2>When we are closed</h2>
-{% if practice.scottish_demo %}
-<p>If you need urgent medical help when your GP practice is closed, call <a href="tel:111">111</a>. <a href="https://www.nhs24.scot/111/">Read about NHS 24's 111 service</a>. In an emergency, call <a href="tel:999">999</a>.</p>
+{% if practice.fictional_demo %}
+<p>If you need urgent medical help when your GP practice is closed, call <a href="tel:111">111</a> or use <a href="{{ practice.urgent.nhs111_url }}">{{ practice.urgent.nhs111_name }} online</a>. In an emergency, call <a href="tel:999">999</a>.</p>
 {% else %}
 <p>If you need urgent medical help when we are closed, go to <a href="{{ practice.urgent.nhs111_url }}">{{ practice.urgent.nhs111_name }} online</a> or call 111. In an emergency, call 999.</p>
 {% endif %}

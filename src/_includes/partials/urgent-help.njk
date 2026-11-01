@@ -13,15 +13,9 @@
       or go to A&amp;E.
     </p>
     <p class="nhsuk-u-margin-bottom-0">
-      {% if practice.scottish_demo %}
-      If you need urgent medical help when your GP practice is closed,
-      <strong>call <a href="tel:111">111</a></strong>.
-      <a href="{{ practice.urgent.nhs111_url }}">Read about NHS 24's 111 service</a>.
-      {% else %}
       If you need urgent medical help and we're closed, go to
       <a href="{{ practice.urgent.nhs111_url }}">{{ practice.urgent.nhs111_name }} online</a>
       or <strong>call <a href="tel:111">111</a></strong>.
-      {% endif %}
       <a href="/urgent-help/">More about getting urgent help</a>.
     </p>
   </div>

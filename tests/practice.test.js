@@ -111,11 +111,29 @@ test("embed code from a known provider, or an added domain, is allowed", () => {
 
 test("practices in England must publish CQC rating and GP earnings", () => {
   const data = demoData();
+  data.demo = false;
   delete data.cqc;
   delete data.gp_earnings;
   const errors = fields(check(data).errors);
   assert.ok(errors.includes("cqc"));
   assert.ok(errors.includes("gp_earnings"));
+});
+
+test("demo boolean alone does not waive England regulatory facts (H2/H7)", () => {
+  const data = demoData();
+  assert.equal(data.demo, true);
+  delete data.cqc;
+  delete data.gp_earnings;
+  const errors = fields(check(data).errors);
+  assert.ok(errors.includes("cqc"));
+  assert.ok(errors.includes("gp_earnings"));
+});
+
+test("confirmed England production fixture still passes without demo allowances (H2/H9)", () => {
+  const data = demoData();
+  data.demo = false;
+  assert.deepEqual(check(data).errors, []);
+  assert.equal(normalisePractice(data).fictional_demo, false);
 });
 
 test("GP earnings figures must be numbers", () => {

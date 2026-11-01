@@ -13,10 +13,10 @@
 
 {% set assetPath = "/assets" %}
 {% set p = practice.practice %}
-{% if practice.scottish_demo %}{% set themeColor = "#143e49" %}{% endif %}
+{% if practice.fictional_demo %}{% set themeColor = "#143e49" %}{% endif %}
 
 {% block headIcons %}
-  {% if practice.scottish_demo %}
+  {% if practice.fictional_demo %}
   <link rel="icon" href="/images/balamory.svg" type="image/svg+xml">
   {% else %}{{ super() }}{% endif %}
 {% endblock %}
@@ -54,7 +54,7 @@
       colour: "yellow"
     }) }}
   {% endif %}
-  {% if practice.scottish_demo %}
+  {% if practice.fictional_demo %}
   <header class="nhsuk-header island-header">
     <div class="nhsuk-width-container">
       <a class="island-brand" href="/">{{ p.name }}<span>Isle of Mull · Care close to home</span></a>
@@ -122,7 +122,7 @@
       }
     ],
     meta: {
-      text: "Website content last reviewed " ~ (practice.site.content_last_reviewed | ukDate(false)) ~ (". Independent fictional design demonstration. No NHS affiliation." if practice.scottish_demo else ". Practice code " ~ p.ods_code ~ ".")
+      text: "Website content last reviewed " ~ (practice.site.content_last_reviewed | ukDate(false)) ~ (". Independent fictional design demonstration. No NHS affiliation." if practice.fictional_demo else ". Practice code " ~ p.ods_code ~ ".")
     },
     copyright: { text: "© " ~ p.name }
   }) }}

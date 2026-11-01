@@ -10,7 +10,7 @@ title: Register with us
 {% endif %}
 
 <h2>How to register</h2>
-{% if practice.scottish_demo %}
+{% if practice.fictional_demo %}
 <p><a class="nhsuk-button" href="/online-requests/">Ask to register</a></p>
 <p>Our reception team can help with registration questions and tell you what happens next.</p>
 {% elif nation == "england" %}
@@ -21,7 +21,7 @@ title: Register with us
 {% endif %}
 
 <h2>After you register</h2>
-{% if practice.scottish_demo %}
+{% if practice.fictional_demo %}
 <p>We will explain how to contact the team, request appointments and order repeat prescriptions.</p>
 {% else %}
 <p>Once you are registered, you can <a href="{{ practice.nhs_app_link.url }}">set up the {{ practice.nhs_app_link.name }}</a> to order prescriptions and see your health record.</p>

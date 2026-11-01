@@ -19,10 +19,10 @@ for (const file of files) {
   assert.match(html, /data-safety="urgent-help"/, file);
   assert.match(html, /href="tel:999"/, file);
   assert.match(html, /href="tel:111"/, file);
-  assert.match(html, /https:\/\/www\.nhs24\.scot\/111\//, file);
+  assert.match(html, /https:\/\/111\.nhs\.uk\//, file);
   assert.doesNotMatch(
     html,
-    /<form\b|<iframe\b|<script[^>]+src="https?:|cqc\.org\.uk|111\.nhs\.uk|tel:\+441632|Z00001|Fernmoor|Millbrook/i,
+    /<form\b|<iframe\b|<script[^>]+src="https?:|cqc\.org\.uk|nhs24|nhsinform|nhsscotland|careinspectorate|healthcareimprovementscotland|socialsecurity\.gov\.scot|tel:\+441632|Z00001|Fernmoor|Millbrook/i,
     file,
   );
   for (const [, href] of html.matchAll(/href="([^"]+)"/g)) {

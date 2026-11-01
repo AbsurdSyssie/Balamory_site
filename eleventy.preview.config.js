@@ -2,12 +2,12 @@
 // SPDX-License-Identifier: MIT
 
 import configure from "./eleventy.config.js";
-import { readPracticeFile } from "./lib/practice.js";
+import { readPracticeFile, isFictionalDemo } from "./lib/practice.js";
 
 export default function (config) {
   const data = readPracticeFile("practice");
-  if (process.env.PRACTICE_DIR || data.demo !== true || data.practice.nation !== "scotland") {
-    throw new Error("This upload target is for the fictional Scottish demonstration only.");
+  if (process.env.PRACTICE_DIR || !isFictionalDemo(data) || data.practice.nation !== "england") {
+    throw new Error("This upload target is for the fictional England service demonstration only.");
   }
   config.addTemplate(
     "demo-headers.njk",

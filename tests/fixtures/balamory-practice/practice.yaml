@@ -5,9 +5,8 @@ practice:
   name: Balamory Group Practice
   name_split: ""
   descriptor: Isle of Mull
-  # Reserved fictional template identifier, never a real Scottish ODS code.
-  ods_code: Z00001
-  nation: scotland
+  # England service-design demo; the fictional Mull setting is unchanged.
+  nation: england
   description: Friendly, local care for our community on the Isle of Mull.
 site:
   url: https://balamory.oddtv.uk/

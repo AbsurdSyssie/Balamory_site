@@ -76,17 +76,21 @@ test("urgent help links to the right 111 service for the nation", () => {
   assert.doesNotMatch(read(wales, "index.html"), /https:\/\/111\.nhs\.uk\//);
 });
 
-test("Scottish demo urgent-help page highlights existing emergency guidance (hazard H1)", () => {
+test("English fictional demo urgent-help page preserves emergency warning (hazard H1)", () => {
   const html = read(balamory, "urgent-help/index.html");
   assert.match(html, /class="nhsuk-card nhsuk-card--warning"/);
   assert.match(html, /<h2 class="nhsuk-card__heading">[\s\S]*?Emergency help[\s\S]*?<\/h2>/);
   assert.match(html, /Emergency help/);
   assert.match(html, /If it is a life-threatening emergency/);
+  assert.match(
+    html,
+    /<p>If it is a life-threatening emergency, <strong>call <a href="tel:999">999<\/a><\/strong> or go to A&amp;E\.<\/p>/,
+  );
   assert.match(html, /href="tel:999"[^>]*>999<\/a>/);
   assert.match(html, /or go to A&amp;E/);
   assert.match(html, /href="tel:111"[^>]*>111<\/a>/);
-  assert.match(html, /NHS 24/);
-  assert.match(html, /nhs24\.scot\/111/);
+  assert.match(html, /NHS 111 online/);
+  assert.match(html, /https:\/\/111\.nhs\.uk\//);
 });
 
 test("all standard pages are built", () => {
@@ -190,7 +194,7 @@ test("the appointments page warns against using the form in an emergency (hazard
   assert.match(html, /Do not use our online form/);
 });
 
-test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7/H9/H10)", () => {
+test("Balamory requests are inert and English signposting stays truthful (H1/H7/H9/H10)", () => {
   const home = read(balamory, "index.html");
   assert.match(home, /Balamory Group Practice/);
   assert.match(home, /src="\/images\/tobermory-harbour\.jpg" width="640" height="377"/);
@@ -201,7 +205,9 @@ test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7
   );
   assert.ok(fs.existsSync(path.join(balamory, "images/tobermory-harbour.jpg")));
   assert.doesNotMatch(home, /href="[^"]*nhsuk-icon|href="[^"]*favicon/);
-  assert.match(home, /NHS App \(England\)/);
+  assert.match(home, />NHS App<\/a>/);
+  assert.doesNotMatch(home, /NHS App \(England\)|Scottish practice/);
+  assert.match(home, /href="https:\/\/www\.nhs\.uk\/"/);
   assert.match(home, /href="https:\/\/www\.nhs\.uk\/nhs-app\/"/);
   assert.match(
     read(balamory, "online-requests/index.html"),
@@ -209,7 +215,7 @@ test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7
   );
   for (const file of htmlFiles(balamory)) {
     const html = fs.readFileSync(file, "utf8");
-    assert.match(html, /https:\/\/www\.nhs24\.scot\/111\//, file);
+    assert.match(html, /https:\/\/111\.nhs\.uk\//, file);
     assert.equal(
       (html.match(/demonstration website for a fictional GP practice/g) ?? []).length,
       1,
@@ -218,14 +224,14 @@ test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7
     assert.match(html, /<meta name="robots" content="noindex">/, file);
     assert.doesNotMatch(
       html,
-      /<form\b|<iframe\b|cqc\.org\.uk|111\.nhs\.uk|111\.wales|ombudsman\.wales|NHS 24 online|maps\.google|tel:\+441632|Z00001/i,
+      /<form\b|<iframe\b|cqc\.org\.uk|nhs24|nhsinform|nhsscotland|careinspectorate|healthcareimprovementscotland|socialsecurity\.gov\.scot|111\.wales|ombudsman\.wales|NHS 24|NHS inform|maps\.google|tel:\+441632|Z00001|Our CQC rating/i,
       file,
     );
     for (const match of html.matchAll(/href="([^"]+)"/g)) {
       const href = match[1];
       assert.ok(
         !/^https?:/.test(href) ||
-          /^https:\/\/(www\.)?(nhs24\.scot|nhsinform\.scot|nhs\.uk|cloudflare\.com|geograph\.org\.uk|commons\.wikimedia\.org|creativecommons\.org)\//.test(
+          /^https:\/\/(www\.)?(111\.nhs\.uk|nhs\.uk|cloudflare\.com|geograph\.org\.uk|commons\.wikimedia\.org|creativecommons\.org)\//.test(
             href,
           ),
         `${file}: ${href}`,
@@ -248,10 +254,26 @@ test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7
     assert.match(read(balamory, `${page}/index.html`), /href="\/online-requests\/"/, page);
   }
   assert.equal((home.match(/class="island-task" href="\/online-requests\/"/g) ?? []).length, 6);
+  for (const [page, labels] of [
+    [
+      "appointments",
+      [
+        "Request an appointment",
+        "Change or cancel an appointment",
+        "Ask for a fit note, letter or help with an admin request",
+      ],
+    ],
+    ["prescriptions", ["Order a repeat prescription", "Send a prescription query"]],
+  ]) {
+    const html = read(balamory, `${page}/index.html`);
+    for (const label of labels) {
+      assert.ok(html.includes(`href="/online-requests/">${label}</a>`), `${page}: ${label}`);
+    }
+  }
   assert.doesNotMatch(read(balamory, "our-team/index.html"), /named accountable GP/);
   assert.match(
     read(balamory, "prescriptions/index.html"),
-    /nhsinform\.scot\/tests-and-treatments\/medicines-and-medical-aids\/prescriptions\//,
+    /nhs\.uk\/nhs-services\/prescriptions\//,
   );
   assert.doesNotMatch(
     read(balamory, "prescriptions/index.html"),

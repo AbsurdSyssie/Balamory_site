@@ -6,8 +6,9 @@ An entirely fictional independent design demonstration. The owner requested Bala
 
 - One global fictional banner on every page including the error page; noindex metadata and deployment headers. Search exclusion is advisory, not access control.
 - All home request cards and appointment, prescription, registration, test, fit-note, admin, complaints and telephone request links lead to `/online-requests/`. Its message is exactly `Your PATCHS/Accurx booking page here`. No forms, embeds, trackers or patient data.
-- `1 Storybook Lane, Tobermory, Isle of Mull` is invented, not directions to a real building. No postcode or map. `01632 960042` is an Ofcom drama number, not dialled by request links. Z00001 is an internal fictional template identifier, not a Scottish ODS identity and not published.
-- Scotland is accepted only in `demo: true`, not as general production support. NHS 24 telephone 111 and NHS inform replace English signposting. The real NHS App link is explicitly labelled England, not claimed to work for Scottish patients. No CQC widget or false Scottish equivalent is fabricated.
+- `1 Storybook Lane, Tobermory, Isle of Mull` is invented, not directions to a real building. No postcode or map. `01632 960042` is an Ofcom drama number, not dialled by request links. No ODS identity is invented or published.
+- The owner requested English GP workflows despite the whimsical Mull setting. `nation: england` selects NHS 111 online, nhs.uk health information and the ordinary NHS App information link. This is not NHS ownership or endorsement. No CQC identity, widget, rating or earnings figures are fabricated.
+- Only literal `demo: true` together with the exact local `/online-requests/` service URL enables fictional-demo allowances for absent ODS, postcode, CQC and earnings facts. All pages retain the fictional banner and noindex. Supplied malformed ODS, earnings and unsafe embeds remain checked; fictional CQC identities/widgets are rejected. Real England and Wales requirements are unchanged. Scotland-only scaffolding has been removed.
 - Review dates describe fictional content review, not clinical approval. Accessibility limitations are stated; no unaudited compliance claim.
 
 ## Check and publish manually
@@ -32,9 +33,18 @@ Push only the new personal `AbsurdSyssie/Balamory_site` repository; upstream is 
 
 ## Not a production practice site
 
-Real use needs confirmed identity, contact details, hours, catchment, staff and accessibility information; genuine supplier links; health board and complaints contacts; approved privacy notice and accessibility audit; closure and service arrangements; clinical safety and owner sign-off; practice-owned accounts; separately reviewed Scottish production support. Never just switch demo off.
+Real use needs confirmed identity, contact details, hours, catchment, staff and accessibility information; genuine supplier links; ICB and complaints contacts; actual CQC details and earnings facts in England; approved privacy notice and accessibility audit; closure and service arrangements; clinical safety and owner sign-off; practice-owned accounts. Never just switch demo off.
 
 ## Verification and deployment, 1 November 2026
+
+### English service-design update
+
+- English NHS links (111 online, health information, NHS App, prescriptions and complaints) returned HTTPS 200; the complaints information redirects to NHS England's current complaints page. The fictional Mull setting and photograph attribution remain unchanged.
+- ESLint, Prettier, practice validation, 47 tests, normal and fresh demo builds, both HTML validators, the 19-page demo audit, REUSE and whitespace checks pass. The expected demo warning remains. An initial test run caught two stale Scottish assertions/privacy references; these were corrected before the passing rerun.
+- Home, appointments, urgent help and contact were visually checked using installed headless Brave at 390×844, 768×1024 and 1440×900. The warning callout is visible with its unchanged emergency wording. The desktop browser tool was disconnected and cached Chrome crashed; Brave worked without installing a browser or Playwright. This was a viewport screenshot inspection, not a full accessibility audit.
+- The custom hostname still returns HTTPS 525. No DNS or other project changes were made. Use the Pages address until the hostname is independently fixed.
+
+### Original deployment record
 
 - Fresh clone at `/home/oscar/Documents/Code_Projects/Balamory_site`. New public repository: <https://github.com/AbsurdSyssie/Balamory_site>. `origin` is preserved with a disabled push URL; only `demo` is writable.
 - New manually uploaded Cloudflare Pages project `balamory-site`, branch main, no Git integration. Public address: <https://balamory-site.pages.dev/>. Initial deployment: `c1173976.balamory-site.pages.dev`. Subsequent tested asset updates use the same project only.
