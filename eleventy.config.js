@@ -30,7 +30,7 @@ export default function (eleventyConfig) {
   // Templates can use NHS.UK frontend macros directly, for example:
   // {% from "nhsuk/components/card/macro.njk" import card %}
   const env = new nunjucks.Environment(
-    new nunjucks.FileSystemLoader(["src/_includes", NHSUK_DIST]),
+    new nunjucks.FileSystemLoader(["src/_includes", NHSUK_DIST, path.join(practiceDir, "views")]),
   );
   eleventyConfig.setLibrary("njk", env);
 

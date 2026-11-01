@@ -61,7 +61,7 @@ test("an ODS code in the wrong format is an error", () => {
 
 test("an unsupported nation is an error", () => {
   const data = demoData();
-  data.practice.nation = "scotland";
+  data.practice.nation = "northern-ireland";
   assert.ok(fields(check(data).errors).includes("practice.nation"));
 });
 

@@ -7,7 +7,11 @@ title: Cookies
 <p>This website does not use cookies, and it does not track you or collect information about your visit.</p>
 
 <h2>Services provided by other companies</h2>
+{% if practice.scottish_demo %}
+<p>Request links stay on this website and do not load a supplier service. External information links have their own privacy and cookie information. Our hosting provider may process technical connection information to deliver and protect this website. See our <a href="/privacy-notice/">privacy notice</a>.</p>
+{% else %}
 <p>When you use our online form, you leave this website and go to a service run by {{ oc.provider }}. That service may use its own cookies. Check its privacy and cookie information for details.</p>
 {% if oc.embed_html or (practice.cqc and practice.cqc.embed_html) %}
 <p>Some pages on this website include content from other companies, such as our online form{% if practice.cqc and practice.cqc.embed_html %} and our CQC rating{% endif %}. These companies may set their own cookies.</p>
+{% endif %}
 {% endif %}

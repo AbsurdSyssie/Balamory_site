@@ -8,6 +8,9 @@ title: Home
 {% set p = practice.practice %}
 {% set oc = practice.online_services.online_consultation %}
 
+{% if practice.scottish_demo %}
+{% include "home.njk" %}
+{% else %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
     <h1>{{ p.name }}</h1>
@@ -127,3 +130,4 @@ title: Home
     {% endif %}
   </div>
 </div>
+{% endif %}

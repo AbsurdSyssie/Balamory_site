@@ -6,6 +6,9 @@ lede: How to order repeat prescriptions and what to do if you run out of medicin
 {% set ps = practice.online_services.prescriptions %}
 {% set oc = practice.online_services.online_consultation %}
 
+{% if practice.scottish_demo %}
+{% include "prescriptions.njk" %}
+{% else %}
 <h2>Order a repeat prescription</h2>
 <p>You can order repeat prescriptions:</p>
 <ul>
@@ -25,3 +28,4 @@ lede: How to order repeat prescriptions and what to do if you run out of medicin
 
 <h2>If you run out of medicine</h2>
 <p>If you need medicine urgently and we are closed, a pharmacy may be able to give you an emergency supply. You can also <a href="{{ practice.urgent.nhs111_url }}">get help from {{ practice.urgent.nhs111_name }}</a>.</p>
+{% endif %}

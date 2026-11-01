@@ -4,6 +4,16 @@ title: Accessibility statement
 ---
 {% set p = practice.practice %}
 {% set a = practice.accessibility %}
+{% if practice.scottish_demo %}
+<p>This accessibility statement applies to the {{ p.name }} website.</p>
+<p>The design uses NHS.UK frontend components, semantic headings, visible keyboard focus and responsive layouts.</p>
+<h2>Testing and known limitations</h2>
+<p>This design has not had an independent accessibility audit or full assistive technology testing. We do not claim WCAG compliance.</p>
+<p>Automated markup checks and visual checks at phone, tablet and desktop sizes are part of the build review. These do not replace testing with disabled users.</p>
+<h2>Feedback</h2>
+<p>The <a href="/online-requests/">contact demonstration</a> shows where an accessible feedback route would go. It does not send a message.</p>
+<p>Prepared on {{ a.statement_prepared | ukDate(false) }}.</p>
+{% else %}
 <p>This accessibility statement applies to the {{ p.name }} website.</p>
 <p>This website is run by {{ p.name }}. We want as many people as possible to be able to use it. For example, you should be able to:</p>
 <ul>
@@ -34,3 +44,4 @@ title: Accessibility statement
 
 <h2>Preparation of this accessibility statement</h2>
 <p>This statement was prepared on {{ a.statement_prepared | ukDate(false) }}. The website content was last reviewed on {{ practice.site.content_last_reviewed | ukDate(false) }}.</p>
+{% endif %}

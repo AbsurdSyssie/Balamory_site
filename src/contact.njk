@@ -7,7 +7,7 @@ title: Contact and find us
 <p>Phone lines are open {{ practice.contact.phone_hours }}.</p>
 
 <h2>Online</h2>
-<p>Use our <a href="/appointments/">online form</a> for medical and admin requests.</p>
+<p>Use our <a href="{{ practice.online_services.online_consultation.url if practice.scottish_demo else '/appointments/' }}">online form</a> for medical and admin requests.</p>
 
 {% if practice.contact.email %}
 <h2>Email</h2>
@@ -21,7 +21,7 @@ title: Contact and find us
   {% for line in site.address %}{{ line }}<br>{% endfor %}
   {{ site.postcode }}
 </p>
-<p><a href="{{ site | postcodeMapUrl }}">View on a map<span class="nhsuk-u-visually-hidden"> ({{ site.name }})</span></a></p>
+{% if not practice.scottish_demo %}<p><a href="{{ site | postcodeMapUrl }}">View on a map<span class="nhsuk-u-visually-hidden"> ({{ site.name }})</span></a></p>{% endif %}
 {% if site.parking %}
 <h3>Parking</h3>
 <p>{{ site.parking }}</p>

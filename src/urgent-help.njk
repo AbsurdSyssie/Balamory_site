@@ -5,6 +5,14 @@ lede: Where to get help if you need it quickly, including when we are closed.
 ---
 {% from "nhsuk/components/card/macro.njk" import card %}
 
+{% if practice.scottish_demo %}
+<h2>Emergency help</h2>
+<p>If it is a life-threatening emergency, <strong>call <a href="tel:999">999</a></strong> or go to A&amp;E.</p>
+<h2>Urgent help when your GP practice is closed</h2>
+<p><strong>Call <a href="tel:111">111</a></strong> for NHS 24. <a href="https://www.nhs24.scot/111/">Read about the 111 service</a>.</p>
+<h2>Health information</h2>
+<p>Visit <a href="https://www.nhsinform.scot/">NHS inform</a> for health information and services in Scotland.</p>
+{% else %}
 {{ card({
   variant: "emergency",
   heading: "Call 999 or go to A&E now if:",
@@ -25,3 +33,4 @@ lede: Where to get help if you need it quickly, including when we are closed.
 
 <h2>When we are open</h2>
 <p>If you need to speak to us urgently, call <a href="{{ practice.phone_link }}">{{ practice.phone_display }}</a> and tell us it is urgent. Do not use the online form for problems that cannot wait.</p>
+{% endif %}

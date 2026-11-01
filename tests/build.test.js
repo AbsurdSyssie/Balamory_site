@@ -174,3 +174,54 @@ test("the appointments page warns against using the form in an emergency (hazard
   assert.match(html, /nhsuk-card--care--emergency/);
   assert.match(html, /Do not use our online form/);
 });
+
+test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7/H9/H10)", () => {
+  const home = read(site, "index.html");
+  assert.match(home, /Balamory Group Practice/);
+  assert.match(home, /NHS App \(England\)/);
+  assert.match(home, /href="https:\/\/www\.nhs\.uk\/nhs-app\/"/);
+  assert.match(
+    read(site, "online-requests/index.html"),
+    /<p>Your PATCHS\/Accurx booking page here<\/p>/,
+  );
+  for (const file of htmlFiles(site)) {
+    const html = fs.readFileSync(file, "utf8");
+    assert.match(html, /https:\/\/www\.nhs24\.scot\/111\//, file);
+    assert.equal(
+      (html.match(/demonstration website for a fictional GP practice/g) ?? []).length,
+      1,
+      file,
+    );
+    assert.match(html, /<meta name="robots" content="noindex">/, file);
+    assert.doesNotMatch(
+      html,
+      /<form\b|<iframe\b|cqc\.org\.uk|111\.nhs\.uk|111\.wales|ombudsman\.wales|NHS 24 online|maps\.google|tel:\+441632|Z00001/i,
+      file,
+    );
+    for (const match of html.matchAll(/href="([^"]+)"/g)) {
+      const href = match[1];
+      assert.ok(
+        !/^https?:/.test(href) ||
+          /^https:\/\/(www\.)?(nhs24\.scot|nhsinform\.scot|nhs\.uk|cloudflare\.com)\//.test(href),
+        `${file}: ${href}`,
+      );
+      if (href.startsWith("/") && !href.startsWith("/assets/")) {
+        const target = href === "/" ? "index.html" : `${href.slice(1)}index.html`;
+        assert.ok(fs.existsSync(path.join(site, target)), `${file}: broken ${href}`);
+      }
+    }
+  }
+  for (const page of [
+    "appointments",
+    "prescriptions",
+    "register",
+    "test-results",
+    "fit-notes",
+    "contact",
+    "complaints",
+  ]) {
+    assert.match(read(site, `${page}/index.html`), /href="\/online-requests\/"/, page);
+  }
+  assert.equal((home.match(/class="island-task" href="\/online-requests\/"/g) ?? []).length, 6);
+  assert.doesNotMatch(read(site, "our-team/index.html"), /named accountable GP/);
+});

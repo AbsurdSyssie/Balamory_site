@@ -43,10 +43,18 @@
   {% if practice.demo %}
     {{ environmentBanner({
       tag: "Demo",
-      text: "This is a demonstration website for a fictional GP practice. None of the people, places or phone numbers are real.",
+      text: "This is a demonstration website for a fictional GP practice. Not a real medical service. Do not use it for medical help.",
       colour: "yellow"
     }) }}
   {% endif %}
+  {% if practice.scottish_demo %}
+  <header class="nhsuk-header island-header">
+    <div class="nhsuk-width-container">
+      <a class="island-brand" href="/">{{ p.name }}<span>Isle of Mull · Care close to home</span></a>
+      <nav aria-label="Main navigation"><ul class="island-nav">{% for item in currentNav %}<li><a href="{{ item.href }}"{% if item.current %} aria-current="page"{% endif %}>{{ item.text }}</a></li>{% endfor %}</ul></nav>
+    </div>
+  </header>
+  {% else %}
   {{ header({
     logo: {
       href: "/",
@@ -60,6 +68,7 @@
     },
     navigation: { items: currentNav }
   }) }}
+  {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -106,7 +115,7 @@
       }
     ],
     meta: {
-      text: "Website content last reviewed " ~ (practice.site.content_last_reviewed | ukDate(false)) ~ ". Practice code " ~ p.ods_code ~ "."
+      text: "Website content last reviewed " ~ (practice.site.content_last_reviewed | ukDate(false)) ~ (". Independent fictional design demonstration. No NHS affiliation." if practice.scottish_demo else ". Practice code " ~ p.ods_code ~ ".")
     },
     copyright: { text: "© " ~ p.name }
   }) }}

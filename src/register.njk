@@ -10,7 +10,10 @@ title: Register with us
 {% endif %}
 
 <h2>How to register</h2>
-{% if nation == "england" %}
+{% if practice.scottish_demo %}
+<p><a class="nhsuk-button" href="/online-requests/">Ask to register</a></p>
+<p>Our reception team can help with registration questions and tell you what happens next.</p>
+{% elif nation == "england" %}
 <p>You can <a href="https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/">register with a GP surgery online on the NHS website</a>, or ask at reception for a registration form.</p>
 <p>You do not need proof of address or immigration status, ID or an NHS number to register.</p>
 {% else %}
@@ -18,4 +21,8 @@ title: Register with us
 {% endif %}
 
 <h2>After you register</h2>
+{% if practice.scottish_demo %}
+<p>We will explain how to contact the team, request appointments and order repeat prescriptions.</p>
+{% else %}
 <p>Once you are registered, you can <a href="{{ practice.nhs_app_link.url }}">set up the {{ practice.nhs_app_link.name }}</a> to order prescriptions and see your health record.</p>
+{% endif %}

@@ -1,7 +1,7 @@
 ---
 layout: page.njk
 title: Appointments and contact us online
-lede: You can contact us online, through the app, or by phone.
+lede: How to request, change or cancel an appointment.
 ---
 {% from "nhsuk/components/action-link/macro.njk" import actionLink %}
 {% from "nhsuk/components/card/macro.njk" import card %}
@@ -13,6 +13,9 @@ lede: You can contact us online, through the app, or by phone.
   descriptionHtml: "<p>it's a life-threatening emergency. Do not use our online form or wait for a call back.</p>"
 }) }}
 
+{% if practice.scottish_demo %}
+{% include "appointments.njk" %}
+{% else %}
 <h2>{{ oc.label or "Contact us online" }}</h2>
 <p>Use our online form to ask for an appointment, get medical advice, or help with things like fit notes and letters.</p>
 {% if oc.availability %}<p>The online form is available {{ oc.availability }}.</p>{% endif %}
@@ -37,3 +40,4 @@ lede: You can contact us online, through the app, or by phone.
 
 <h2>Cancelling an appointment</h2>
 <p>If you cannot make your appointment, please tell us as soon as possible so we can offer it to someone else. You can cancel in the {{ practice.nhs_app_link.name }} or by calling us.</p>
+{% endif %}

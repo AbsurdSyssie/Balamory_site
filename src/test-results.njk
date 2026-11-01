@@ -4,6 +4,7 @@ title: Test results
 lede: How to find out the results of blood tests, scans and other tests.
 ---
 {% if practice.online_services.test_results %}<p>{{ practice.online_services.test_results }}</p>{% endif %}
+{% if practice.scottish_demo %}<p><a class="nhsuk-button" href="/online-requests/">Ask about a test result</a></p>{% endif %}
 
 {% if practice.online_services.nhs_app %}
 <h2>Using the {{ practice.nhs_app_link.name }}</h2>
