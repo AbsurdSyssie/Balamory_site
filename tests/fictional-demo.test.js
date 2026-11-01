@@ -71,6 +71,30 @@ test("fictional demo still rejects unsafe data, supplied identities and embeds (
   }
 });
 
+test("only absent GP earnings may use the fictional demo allowance (H2)", () => {
+  for (const earnings of [undefined, null]) {
+    const absent = structuredClone(data);
+    absent.gp_earnings = earnings;
+    assert.deepEqual(validatePractice(absent, { pages }).errors, []);
+    absent.demo = false;
+    assert.ok(validatePractice(absent, { pages }).errors.some((e) => e.field === "gp_earnings"));
+  }
+});
+
+test("supplied non-object GP earnings are rejected in demo and production (H2)", () => {
+  for (const demo of [true, false]) {
+    for (const earnings of [false, 0, [], "", "not an object"]) {
+      const bad = structuredClone(data);
+      bad.demo = demo;
+      bad.gp_earnings = earnings;
+      assert.ok(
+        validatePractice(bad, { pages }).errors.some((e) => e.field === "gp_earnings"),
+        `demo=${demo}, earnings=${JSON.stringify(earnings)}`,
+      );
+    }
+  }
+});
+
 test("English fictional demo routes requests locally and urgent help to NHS 111 (H1/H9/H10)", () => {
   const p = normalisePractice(data);
   assert.equal(p.phone_link, "/online-requests/");

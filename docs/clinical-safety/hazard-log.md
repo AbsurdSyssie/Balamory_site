@@ -23,6 +23,8 @@ Ratings use the DCB0129 risk matrix: severity (1 minor to 5 catastrophic) and li
 
 ### Fictional Isle of Mull demonstration (1 November 2026)
 
+H2: only undefined or null GP earnings count as absent for the fictional demo allowance. Supplied booleans, numbers, strings and arrays are rejected as malformed objects before field validation. Regression tests in `tests/fictional-demo.test.js` cover false, zero, empty and non-empty strings, arrays, and absent values in both demo and production modes. Existing object field checks and England production requirements remain in place.
+
 H9: the owner clarified that this is an English GP service-design demo with a whimsical fictional Mull setting. `nation: england` now selects NHS 111 online, nhs.uk health information and the NHS App information link without a geography caveat. Scotland-only scaffolding is removed, not extended into production support. There is no NHS endorsement claim.
 
 H2/H7: no ODS code, postcode, map, CQC identity/rating or earnings figures are fabricated. Missing regulatory/identity facts are allowed only by the narrow inert-demo predicate: literal `demo: true` and exact `/online-requests/` consultation URL. That predicate also selects the fictional presentation; the literal boolean always enables the global banner and noindex. A supplied CQC identity/widget is rejected for the fictional demo; supplied ODS and earnings still undergo validation, as do all embeds. Real England and Wales requirements remain unchanged. Negative tests cover false, absent, string and numeric demo values and unsafe supplied controls. The preview publishing gate also requires England. Switching off demo cannot produce a valid practice from these details.
