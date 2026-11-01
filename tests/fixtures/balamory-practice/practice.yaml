@@ -1,0 +1,105 @@
+# Entirely fictional design demonstration, authorised by the demo owner.
+# No real practice identity, postcode, staff, provider account or patient data.
+demo: true
+practice:
+  name: Balamory Group Practice
+  name_split: ""
+  descriptor: Isle of Mull
+  # Reserved fictional template identifier, never a real Scottish ODS code.
+  ods_code: Z00001
+  nation: scotland
+  description: Friendly, local care for our community on the Isle of Mull.
+site:
+  url: https://balamory.oddtv.uk/
+  custom_domain: ""
+  logo: ""
+  # Review of fictional demonstration content, not clinical approval.
+  content_last_reviewed: "2026-11-01"
+contact:
+  # Ofcom drama number. Never dialled by a site request link.
+  phone: "01632 960042"
+  phone_hours: 8am to 6pm, Monday to Friday
+sites:
+  - name: Balamory Group Practice
+    address:
+      - 1 Storybook Lane
+      - Tobermory
+      - Isle of Mull
+    parking: A small car park beside the practice, with accessible spaces near the entrance.
+    accessibility:
+      - Step-free entrance
+      - Ground-floor consulting rooms
+      - Accessible toilet
+      - Hearing loop at reception
+opening_hours:
+  monday: [{ opens: "08:00", closes: "18:00" }]
+  tuesday: [{ opens: "08:00", closes: "18:00" }]
+  wednesday: [{ opens: "08:00", closes: "18:00" }]
+  thursday: [{ opens: "08:00", closes: "18:00" }]
+  friday: [{ opens: "08:00", closes: "18:00" }]
+  saturday: closed
+  sunday: closed
+closures: []
+notices: []
+online_services:
+  online_consultation:
+    provider: Demonstration request page
+    label: Contact us online
+    url: /online-requests/
+    embed_html: ""
+  nhs_app: false
+  prescriptions:
+    turnaround: Please allow 3 working days for repeat prescription requests. Weekends and bank holidays may take longer.
+  test_results: Ask the practice team about your results. If a clinician needs to speak to you about a result, we will contact you.
+trusted_embed_domains: []
+team:
+  - group: Our doctors
+    people:
+      - name: Dr Poppy McPuffin
+        role: GP partner
+        details: Enjoys getting to know families and supporting continuity of care.
+      - name: Dr Hamish Hoots
+        role: GP partner
+        details: Works with the team to support patients with long-term conditions.
+      - name: Dr Flora Fizzleburn
+        role: Salaried GP
+        details: Part of our friendly general practice team.
+  - group: Nursing and clinical team
+    people:
+      - name: Isla Teacup
+        role: Practice nurse
+      - name: Archie Bramble
+        role: Advanced nurse practitioner
+      - name: Morag Moonbeam
+        role: Healthcare assistant
+      - name: Finlay Foxglove
+        role: Clinical pharmacist
+  - group: Reception and management
+    people:
+      - name: Mabel MacMarmalade
+        role: Practice manager
+      - name: Bonnie Bluebell
+        role: Reception team lead
+services:
+  - name: Long-term condition reviews
+    description: Regular appointments to review your care with the practice team.
+  - name: Vaccinations and immunisations
+    description: Contact the team about routine vaccination appointments.
+  - name: Nursing appointments
+    description: Our nursing team offers reviews and planned care.
+  - name: Medication reviews
+    description: A chance to discuss your regular medicines with the clinical team.
+registration:
+  catchment: We welcome registration enquiries from people living in Tobermory and the surrounding Isle of Mull community. Ask reception about our practice area.
+  catchment_map_url: ""
+complaints:
+  contact: Mabel MacMarmalade, practice manager
+  how: Please contact the practice manager if you would like to give feedback or raise a concern.
+ppg:
+  text: Our patient group brings patients and the practice team together to talk about how we can improve our services.
+  contact: Ask reception about getting involved.
+accessibility:
+  statement_prepared: "2026-11-01"
+  known_issues:
+    - This design has not had an independent accessibility audit or assistive technology testing.
+news: []

@@ -10,8 +10,10 @@ import {
   normalisePractice,
 } from "../lib/practice.js";
 
-const data = readPracticeFile("practice");
-const pages = listPages("practice");
+// Scottish demo assertions must not depend on the practice's editable details.
+const fixture = "tests/fixtures/balamory-practice";
+const data = readPracticeFile(fixture);
+const pages = listPages(fixture);
 
 test("Scottish support is fictional only, not a production validation bypass (H2/H7/H9)", () => {
   assert.deepEqual(validatePractice(data, { pages }).errors, []);

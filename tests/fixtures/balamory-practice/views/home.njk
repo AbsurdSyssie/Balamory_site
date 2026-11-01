@@ -1,0 +1,36 @@
+<section class="island-hero" aria-labelledby="welcome-heading">
+  <div>
+    <p class="island-eyebrow">Your island. Your practice.</p>
+    <h1 id="welcome-heading">A little closer.<br>A little more care.</h1>
+    <p class="nhsuk-lede-text">Welcome to Balamory Group Practice. Friendly, local care for our community on the Isle of Mull.</p>
+    <a class="nhsuk-button" href="/online-requests/">Request an appointment</a>
+    <a class="island-secondary" href="/opening-times/">Opening times →</a>
+  </div>
+  <div class="island-scene" role="img" aria-label="An original illustration of colourful island houses beside the sea">
+    <div class="island-sun"></div><div class="island-hill"></div>
+    <div class="island-houses"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="island-sea"></div>
+    <p>Good neighbours.<br>Great little island.</p>
+  </div>
+</section>
+<section aria-labelledby="tasks-heading">
+  <p class="island-eyebrow">Start here</p>
+  <h2 id="tasks-heading">What can we help you with?</h2>
+  <div class="island-tasks">
+    {% for item in [
+      {number: "01", title: "Appointments", text: "Ask for an appointment, or change an existing one."},
+      {number: "02", title: "Repeat prescriptions", text: "Order your regular medicines or ask a prescription question."},
+      {number: "03", title: "Test results", text: "Ask the team about a result you are waiting for."},
+      {number: "04", title: "Fit notes and letters", text: "Request a fit note or help with paperwork."},
+      {number: "05", title: "Register with us", text: "New to the island? Ask about joining the practice."},
+      {number: "06", title: "Other requests", text: "Update your details or send an admin request."}
+    ] %}
+    <a class="island-task" href="/online-requests/"><span class="island-task-number">{{ item.number }}</span><h3>{{ item.title }} <span aria-hidden="true">↗</span></h3><p>{{ item.text }}</p></a>
+    {% endfor %}
+  </div>
+</section>
+<section class="island-community" aria-labelledby="community-heading">
+  <div><p class="island-eyebrow">Rooted in our community</p><h2 id="community-heading">Familiar faces.<br>A warm welcome.</h2><p>From the first hello at reception to a conversation with your nurse, our team is here to listen.</p><a href="/our-team/">Meet the practice team →</a></div>
+  <div class="island-visit"><h3>Visit the practice</h3><p>1 Storybook Lane<br>Tobermory<br>Isle of Mull</p><p>Monday to Friday<br><strong>8am to 6pm</strong></p><a href="/contact/">Contact and accessibility →</a></div>
+</section>
+<section class="island-information" aria-labelledby="information-heading"><h2 id="information-heading">Useful information</h2><p>For trusted health information and services in Scotland, visit <a href="https://www.nhsinform.scot/">NHS inform</a>.</p><p><a href="https://www.nhs.uk/nhs-app/">NHS App (England)</a>: an example of an online patient service. It is not the patient app for this Scottish practice.</p><p><a href="/services/">Our services</a> · <a href="/about/">About the practice</a> · <a href="/complaints/">Feedback and complaints</a></p></section>

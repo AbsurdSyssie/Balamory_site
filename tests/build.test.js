@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Marcus Baw
 // SPDX-License-Identifier: MIT
 
-// Builds the site from the practice's own details in practice/, the frozen
-// demo practice and a Wales test practice, then checks the output. Tests that
+// Builds the site from the practice's own details in practice/ and the frozen
+// demo, Balamory and Wales fixtures, then checks the output. Tests that
 // use "site" must pass for any valid practice, because practices run them on
 // their own copy before publishing. These tests protect the clinical safety controls described
 // in docs/clinical-safety/hazard-log.md.
@@ -40,6 +40,7 @@ const read = (dir, file) => fs.readFileSync(path.join(dir, file), "utf8");
 let site;
 let demo;
 let wales;
+let balamory;
 
 before(async () => {
   const warn = console.warn;
@@ -48,6 +49,7 @@ before(async () => {
     site = await build("practice", "site");
     demo = await build("tests/fixtures/demo-practice", "demo");
     wales = await build("tests/fixtures/wales-practice", "wales");
+    balamory = await build("tests/fixtures/balamory-practice", "balamory");
   } finally {
     console.warn = warn;
   }
@@ -56,7 +58,7 @@ before(async () => {
 after(() => fs.rmSync(tmp, { recursive: true, force: true }));
 
 test("every page shows 999 and 111 urgent help (hazard H1)", () => {
-  for (const dir of [site, demo, wales]) {
+  for (const dir of [site, demo, wales, balamory]) {
     const files = htmlFiles(dir);
     assert.ok(files.length > 10);
     for (const file of files) {
@@ -176,17 +178,17 @@ test("the appointments page warns against using the form in an emergency (hazard
 });
 
 test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7/H9/H10)", () => {
-  const home = read(site, "index.html");
+  const home = read(balamory, "index.html");
   assert.match(home, /Balamory Group Practice/);
   assert.match(home, /href="\/images\/balamory.svg"/);
   assert.doesNotMatch(home, /href="[^"]*nhsuk-icon|href="[^"]*favicon/);
   assert.match(home, /NHS App \(England\)/);
   assert.match(home, /href="https:\/\/www\.nhs\.uk\/nhs-app\/"/);
   assert.match(
-    read(site, "online-requests/index.html"),
+    read(balamory, "online-requests/index.html"),
     /<p>Your PATCHS\/Accurx booking page here<\/p>/,
   );
-  for (const file of htmlFiles(site)) {
+  for (const file of htmlFiles(balamory)) {
     const html = fs.readFileSync(file, "utf8");
     assert.match(html, /https:\/\/www\.nhs24\.scot\/111\//, file);
     assert.equal(
@@ -209,7 +211,7 @@ test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7
       );
       if (href.startsWith("/") && !href.startsWith("/assets/") && !href.startsWith("/images/")) {
         const target = href === "/" ? "index.html" : `${href.slice(1)}index.html`;
-        assert.ok(fs.existsSync(path.join(site, target)), `${file}: broken ${href}`);
+        assert.ok(fs.existsSync(path.join(balamory, target)), `${file}: broken ${href}`);
       }
     }
   }
@@ -222,16 +224,16 @@ test("Balamory requests are inert and Scottish signposting stays truthful (H1/H7
     "contact",
     "complaints",
   ]) {
-    assert.match(read(site, `${page}/index.html`), /href="\/online-requests\/"/, page);
+    assert.match(read(balamory, `${page}/index.html`), /href="\/online-requests\/"/, page);
   }
   assert.equal((home.match(/class="island-task" href="\/online-requests\/"/g) ?? []).length, 6);
-  assert.doesNotMatch(read(site, "our-team/index.html"), /named accountable GP/);
+  assert.doesNotMatch(read(balamory, "our-team/index.html"), /named accountable GP/);
   assert.match(
-    read(site, "prescriptions/index.html"),
+    read(balamory, "prescriptions/index.html"),
     /nhsinform\.scot\/tests-and-treatments\/medicines-and-medical-aids\/prescriptions\//,
   );
   assert.doesNotMatch(
-    read(site, "prescriptions/index.html"),
+    read(balamory, "prescriptions/index.html"),
     /href="[^"]*nhs-services\/pharmacy\/"/,
   );
 });
